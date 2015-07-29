@@ -1,0 +1,21 @@
+from django.contrib.auth.models import User, Group
+from rest_framework import viewsets
+from .serializers import UserSerializer, GroupSerializer
+
+class UserViewSet(viewsets.ModelViewSet):
+    """Informacion de los usuarios.
+
+    Contiene los campos: ('url','username','email','groups')
+
+    """
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+class GroupViewSet(viewsets.ModelViewSet):
+    """Informacion de los grupos de usuarios.
+
+    Contiene los campos: ('url','name')
+
+    """
+    queryset = Group.objects.all()
+    serializer_class = GroupSerializer
